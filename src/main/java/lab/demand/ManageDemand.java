@@ -12,38 +12,28 @@ public class ManageDemand {
     }
 
     public double calculateTotal(List<Order> orders){
-        // Calculate Taxes
-        double taxes = 0.0;
+        double orderTaxes;
+		long orderQuantity;
+		double result = 0.0;
         for (Order order : orders) {
-            taxes += m_tax.calculateTax(order.country);
+            orderTaxes = m_tax.calculateTax(order.getCountry());
+			orderQuantity = order.getQuantity();
+			result += orderTaxes*orderQuantity;
         }
 
-        // Calculate Total
-        double quantities = 0.0;
-        for (Order order : orders) {
-            double temp = order.quantity;
-            quantities += temp;
-        }
-
-        return quantities * taxes;
+        return result;
     }
 
     public double calculateTotal(List<Order> orders, Tax tax){
-        // Calculate additionals by country
-        double taxes = 0.0;
+        double orderTaxes;
+		long orderQuantity;
+		double result = 0.0;
         for (Order order : orders) {
-            double m_tax = tax.calculateTax(order.country);
-            taxes += tax;
+            orderTaxes = tax.calculateTax(order.getCountry());
+			orderQuantity = order.getQuantity();
+			result += orderTaxes*orderQuantity;
         }
 
-        // Calculate Total
-        double quantities = 0.0;
-        for (Order order : orders) {
-            double temp = order.quantity;
-            quantities += temp;
-        }
-
-        return quantities * taxes;
+        return result;
     }
-
 }

@@ -8,12 +8,8 @@ public class Tax {
 	  countryTaxes = list;
 	}
 
-    public double calculateTax(String country) {
-	  countryTaxes.get(country);
-	  if (countryTaxes.get(country) == null)
-		return countryTaxes.get(country);
-	  else
-		return 0.0;
+    public Double calculateTax(String country) {
+	  return countryTaxes.getOrDefault(country, 0.0D);
     }
 
 }
