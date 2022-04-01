@@ -1,15 +1,19 @@
 package lab.demand;
+import java.util.HashMap;
 
 public class Tax {
-    
+	private HashMap<String, Double> countryTaxes = new HashMap<String, Double>();
+	
+	public Tax(HashMap<String, Double> list) {
+	  countryTaxes = list;
+	}
+
     public double calculateTax(String country) {
-        if (country.equals("PE")) {
-            return 0.18;
-        } else if (country.equals("BR")) {
-            return 0.12;
-        } else {
-            return 0.0;
-        }
+	  countryTaxes.get(country);
+	  if (countryTaxes.get(country) == null)
+		return countryTaxes.get(country);
+	  else
+		return 0.0;
     }
 
 }

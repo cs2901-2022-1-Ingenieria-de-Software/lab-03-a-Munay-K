@@ -2,28 +2,11 @@ package lab.demand;
 
 public class Order {
 
-    private String country;
-    private Long quantity;
+    String m_country;
+    Long m_quantity;
     
     public Order(String country, Long quantity) {
-        this.country = country;
-        this.quantity = quantity;
+        this.m_country = country;
+        this.m_quantity = quantity;
     }
-
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
-    
 }
