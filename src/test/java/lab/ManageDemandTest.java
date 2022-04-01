@@ -10,6 +10,7 @@ import lab.util.TestUtil;
 import lab.demand.Order;
 
 import java.util.List;
+import java.util.HashMap;
 
 @Test
 public class ManageDemandTest {
@@ -20,7 +21,11 @@ public class ManageDemandTest {
 
     @BeforeClass
     public void setup() {
-        tax = new Tax();
+		HashMap<String, Double> countryTaxes = new HashMap<String, Double>();
+		countryTaxes.put("PE", 0.18D);
+		countryTaxes.put("BR", 0.12D);
+
+        tax = new Tax(countryTaxes);
         demand =  new ManageDemand(tax);
     }
     
@@ -30,6 +35,10 @@ public class ManageDemandTest {
         Assert.assertEquals(Math.round(result), 7.0);
     }
 
-    // Add Tests !!
+	public void test_AllOrdersColombia() {
+        List<Order> ordersFromColombia = TestUtil.buildOrdersColombia();
+        double result = demand.calculateTotal(ordersFromColombia);
+        Assert.assertEquals(Math.round(result), 0.0);
+	}
 
 }

@@ -8,8 +8,8 @@ public class Tax {
 	  countryTaxes = list;
 	}
 
-    public Double calculateTax(String country) {
-	  return countryTaxes.getOrDefault(country, 0.0D);
+    public double calculateTax(String country) {
+	  return countryTaxes.getOrDefault(country, 0.0);
     }
 
 }
